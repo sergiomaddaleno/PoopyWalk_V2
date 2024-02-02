@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour {
     public GameObject plug;
     public AudioSource[] audio;
     public AudioClip[] audioclip;
+
+    public Joystick movementJoystick;
+    public float joystickSpeedMultiplier = 1.5f;
     
     
     /*
@@ -44,6 +47,17 @@ public class PlayerController : MonoBehaviour {
 
 
     void Update() {
+
+        float horizontalInput = movementJoystick.Direction.x;
+        Vector3 horizontalMovement = new Vector3(horizontalInput, 0, 0);
+        
+        Vector3 movement = horizontalMovement;
+        transform.position += movement * speed * joystickSpeedMultiplier * Time.deltaTime;
+
+        if (Mathf.Abs(horizontalInput) > 0) {
+            sprite.flipX = horizontalInput < 0;
+        }
+
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && !isPause) {
             this.transform.position += Vector3.left * speed * Time.deltaTime;
             sprite.flipX = true;
@@ -51,10 +65,11 @@ public class PlayerController : MonoBehaviour {
 
         if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && !isPause) {
             this.transform.position += Vector3.right * speed * Time.deltaTime;
+            transform.position += movement * speed * joystickSpeedMultiplier * Time.deltaTime;
             sprite.flipX = false;
         }
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
+        if (Mathf.Abs(horizontalInput) > 0 || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
             animator.SetBool("Running", true);
         }else{
             animator.SetBool("Running", false);
