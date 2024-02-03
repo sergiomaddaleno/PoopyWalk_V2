@@ -9,6 +9,7 @@ public class PauseMenuScript : MonoBehaviour
   public void ResumeGame() {
     Time.timeScale = 1.0f;
     player.isPause = false;
+    player.UI_pause = false;
     gameObject.SetActive(false);
   }
 }
