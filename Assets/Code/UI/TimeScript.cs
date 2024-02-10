@@ -38,7 +38,7 @@ public class TimeScript : MonoBehaviour
             levelOneCountdown -= Time.deltaTime;
             UpdateTimer(levelOneCountdown);
         }else{
-            Debug.Log("Tutorial pass!");
+            //Debug.Log("Tutorial pass!");
             SceneManager.LoadScene(1);
         }
     }
