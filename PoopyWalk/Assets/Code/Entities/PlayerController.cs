@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-    public GameObject fartVFX, pauseMenu,Wc,Dead,anim;
+    public GameObject fartVFX, pauseMenu,Wc;
     public Transform player;
     public SpriteRenderer sprite;
     public Animator animator;

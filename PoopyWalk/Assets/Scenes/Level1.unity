@@ -21992,6 +21992,11 @@ Transform:
   - {fileID: 1310558747}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &664102843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7305619367172923677, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
+  m_PrefabInstance: {fileID: 1431427112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &678371969
 GameObject:
   m_ObjectHideFlags: 0
@@ -34818,6 +34823,9 @@ MonoBehaviour:
   timerText: {fileID: 1069778606}
   levelOneCountdown: 90
   stopTimer: 0
+  dead: {fileID: 2034505335}
+  live: {fileID: 31098555}
+  pop: {fileID: 664102843}
 --- !u!1 &1081169657
 GameObject:
   m_ObjectHideFlags: 0
@@ -46201,6 +46209,18 @@ PrefabInstance:
     - target: {fileID: 3202298485394690318, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
       propertyPath: m_Name
       value: Mainchar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003373709210283829, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818362484257502276, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339305949295472372, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -62416,6 +62436,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.52, y: 0.46}
   m_EdgeRadius: 0
+--- !u!1 &2034505335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6818362484257502276, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
+  m_PrefabInstance: {fileID: 1431427112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2052604820
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,10 +10,14 @@ public class TimeScript : MonoBehaviour
     public float levelOneCountdown = 90.0f;
     public bool stopTimer = false;
     public static TimeScript instance;
+    public GameObject dead,live,pop;
     void Start() {
         UpdateTimer(levelOneCountdown);
         if(instance == null)
           instance = this;
+        live.SetActive(true);
+        dead.SetActive(false);
+         pop.SetActive(false);
     }
 
     private void UpdateTimer(float timer) {
@@ -39,7 +43,10 @@ public class TimeScript : MonoBehaviour
             UpdateTimer(levelOneCountdown);
         }else{
             //Debug.Log("Tutorial pass!");
-            SceneManager.LoadScene(1);
+            dead.SetActive(true);
+            live.SetActive(false);
+            pop.SetActive(true);
+            //SceneManager.LoadScene(1);
         }
     }
 }
