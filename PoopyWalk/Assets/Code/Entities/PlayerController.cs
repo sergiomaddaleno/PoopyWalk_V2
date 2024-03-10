@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-    public GameObject fartVFX, pauseMenu,Wc;
+    public GameObject fartVFX, pauseMenu,Wc,win,game;
     public Transform player;
+    public Button boton;
     public SpriteRenderer sprite;
     public Animator animator;
     public LayerMask groundMask;
@@ -23,11 +25,11 @@ public class PlayerController : MonoBehaviour {
     public GameObject plug;
     public AudioSource[] audio;
     public AudioClip[] audioclip;
-    public int timetomessage=3000;
+    public int timetomessage=8000;
     public bool showmessage=true;
     public Joystick movementJoystick;
     public float joystickSpeedMultiplier = 1.5f;
-
+    public bool wins;
     private bool UI_jump;
     public bool UI_pause;
     
@@ -49,6 +51,9 @@ public class PlayerController : MonoBehaviour {
         plugtime = 300;
         UI_jump = false;
         UI_pause = false;
+        boton.gameObject.SetActive(false);
+        win.SetActive(false);
+        wins=false;
     }
 
 
@@ -103,13 +108,13 @@ public class PlayerController : MonoBehaviour {
 
         }
 
-        if(timetomessage>1500){
+        if(timetomessage>5800){
           Wc.SetActive(true);
           
         }else{
              Wc.SetActive(false);
              if(timetomessage<=0){
-                timetomessage=3000;
+                timetomessage=8000;
              }
         }
         
@@ -124,7 +129,7 @@ public class PlayerController : MonoBehaviour {
         grounded = Physics2D.Raycast(this.transform.position, Vector2.down, 2.0f, groundMask.value);
         animator.SetBool("Flying", !grounded);
 
-        if ((Input.GetKeyDown(KeyCode.Space) || UI_jump) && fuel > 0.0f) {
+        if ((Input.GetKeyDown(KeyCode.Space) || UI_jump) && fuel > 0.0f && !isPause) {
             UI_jump = false;
             rb.velocity = new Vector2(rb.velocity.x, 8.0f);
             fuel -= 5.0f;
@@ -188,6 +193,7 @@ public class PlayerController : MonoBehaviour {
             
           coll.GetComponent<Animator>().SetTrigger("Arrival");
           TimeScript.instance.stopTimer = true;
+          wins=true;
           if(GameManager.game.isLevel1){
             float aux_time = TimeScript.instance.ObtainTime();
             int minutes = Mathf.FloorToInt(aux_time / 60);
@@ -204,12 +210,15 @@ public class PlayerController : MonoBehaviour {
                 }
             }
           }
-          GameManager.game.isLevel1 = false;
+        GameManager.game.isLevel1 = false;
+        boton.gameObject.SetActive(true);
+        win.SetActive(true);
+        game.SetActive(false);
           speed = 0.0f;
           fuel = 0.0f;
            // Debug.Log("GameOver");
            audio[0].PlayOneShot(audioclip[4]);
-           StartCoroutine(ChangeScenes());
+           //StartCoroutine(ChangeScenes());
         }
     }
 

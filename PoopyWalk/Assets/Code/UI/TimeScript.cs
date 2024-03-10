@@ -10,14 +10,18 @@ public class TimeScript : MonoBehaviour
     public float levelOneCountdown = 90.0f;
     public bool stopTimer = false;
     public static TimeScript instance;
-    public GameObject dead,live,pop;
+    public AnimationClip nuevoClip;
+    public Animator animator;
+    public PlayerController player;
+    public GameObject image;
+    public Button boton;
     void Start() {
         UpdateTimer(levelOneCountdown);
         if(instance == null)
           instance = this;
-        live.SetActive(true);
-        dead.SetActive(false);
-         pop.SetActive(false);
+          
+          boton.gameObject.SetActive(false);
+          image.SetActive(false);
     }
 
     private void UpdateTimer(float timer) {
@@ -41,12 +45,23 @@ public class TimeScript : MonoBehaviour
         if (levelOneCountdown > 0.0f && !stopTimer) {
             levelOneCountdown -= Time.deltaTime;
             UpdateTimer(levelOneCountdown);
-        }else{
             //Debug.Log("Tutorial pass!");
-            dead.SetActive(true);
-            live.SetActive(false);
-            pop.SetActive(true);
-            //SceneManager.LoadScene(1);
+            
+        }else{
+            AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+
+           
+            animator.Play(nuevoClip.name, 0, currentState.normalizedTime); 
+            player.isPause=true;
+            if(!player.wins){
+            image.SetActive(true);
+            
+            boton.gameObject.SetActive(true);
+            
+
+            }
+            
+
         }
     }
 }
