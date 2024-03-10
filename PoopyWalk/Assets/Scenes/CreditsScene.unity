@@ -1002,7 +1002,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'UI Joystic pack: Unity asset store'
+  m_Text: 'UI Joystick pack: Unity asset store'
 --- !u!222 &1098088941
 CanvasRenderer:
   m_ObjectHideFlags: 0

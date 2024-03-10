@@ -22713,16 +22713,16 @@ RectTransform:
   m_GameObject: {fileID: 781938132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.74375004, y: 2.4875, z: 1}
+  m_LocalScale: {x: 2, y: 14, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1696226684}
   m_Father: {fileID: 727015642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -16, y: 16.643}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMax: {x: 5, y: 0}
+  m_AnchoredPosition: {x: -3202, y: -2}
+  m_SizeDelta: {x: -3040, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &781938134
 MonoBehaviour:
@@ -61551,7 +61551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 2, y: 2}
-  m_AnchoredPosition: {x: -78.8, y: -17}
+  m_AnchoredPosition: {x: -78.8, y: -17.8}
   m_SizeDelta: {x: -160, y: -30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696226685
@@ -61587,7 +61587,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: JUMP
+  m_Text: 
 --- !u!222 &1696226686
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -62268,14 +62268,14 @@ RectTransform:
   m_GameObject: {fileID: 2011969598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 727015642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 482, y: 129}
+  m_AnchoredPosition: {x: 401, y: 143}
   m_SizeDelta: {x: 129.8611, y: 43.9531}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2017336409
@@ -67825,6 +67825,10 @@ PrefabInstance:
     - target: {fileID: 2753843085313396084, guid: a9c9379ddaf75dc4091a5ff1b8be3cc5, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2753843085313396084, guid: a9c9379ddaf75dc4091a5ff1b8be3cc5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827040739563449917, guid: a9c9379ddaf75dc4091a5ff1b8be3cc5, type: 3}
       propertyPath: m_Pivot.x
