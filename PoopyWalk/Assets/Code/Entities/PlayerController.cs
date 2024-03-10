@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-    public GameObject fartVFX, pauseMenu;
+    public GameObject fartVFX, pauseMenu,Wc,Dead,anim;
     public Transform player;
     public SpriteRenderer sprite;
     public Animator animator;
@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour {
     public GameObject plug;
     public AudioSource[] audio;
     public AudioClip[] audioclip;
-
+    public int timetomessage=3000;
+    public bool showmessage=true;
     public Joystick movementJoystick;
     public float joystickSpeedMultiplier = 1.5f;
 
@@ -102,6 +103,20 @@ public class PlayerController : MonoBehaviour {
 
         }
 
+        if(timetomessage>1500){
+          Wc.SetActive(true);
+          
+        }else{
+             Wc.SetActive(false);
+             if(timetomessage<=0){
+                timetomessage=3000;
+             }
+        }
+        
+        timetomessage--;
+
+
+      
         Vector3 position = player.transform.position;
         position.y = Mathf.Clamp(position.y, -2.0f, 10.0f);
         transform.position = position;
