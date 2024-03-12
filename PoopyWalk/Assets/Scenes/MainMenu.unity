@@ -474,6 +474,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6079757984292781460, guid: 2807b22439c0b9c4d9f6393fcb0345ac, type: 3}
+      propertyPath: m_Color.b
+      value: 0.18583126
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079757984292781460, guid: 2807b22439c0b9c4d9f6393fcb0345ac, type: 3}
+      propertyPath: m_Color.g
+      value: 0.18583126
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079757984292781460, guid: 2807b22439c0b9c4d9f6393fcb0345ac, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4528302
+      objectReference: {fileID: 0}
     - target: {fileID: 7448147569707696707, guid: 2807b22439c0b9c4d9f6393fcb0345ac, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -532,7 +544,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.05882353, g: 0.2735849, b: 0.09803922, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.23921569, b: 0.43529412, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1097,6 +1109,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1081822124}
   - component: {fileID: 1081822125}
+  - component: {fileID: 1081822126}
+  - component: {fileID: 1081822127}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -1134,7 +1148,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081822123}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1fa013cbbb5f07442be0d78a1d5c6b10, type: 2}
   m_CullingMode: 0
@@ -1147,6 +1161,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1081822126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081822123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729d9115605d6e341a644c1a6f917521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1081822127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081822123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5083a25cc6b8d84591d0e304328a294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minutes: 1
+  seconds: 30
+  isLevel1: 0
 --- !u!1 &1154705402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,7 +1646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonsAnim: {fileID: 1081822125}
   logoAnim: {fileID: 470045761}
-  secondsToStart: 2
+  secondsToStart: 0
 --- !u!1 &1672522081
 GameObject:
   m_ObjectHideFlags: 0
