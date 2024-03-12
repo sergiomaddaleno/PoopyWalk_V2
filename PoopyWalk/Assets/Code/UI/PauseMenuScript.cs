@@ -12,4 +12,5 @@ public class PauseMenuScript : MonoBehaviour
     player.UI_pause = false;
     gameObject.SetActive(false);
   }
+
 }
