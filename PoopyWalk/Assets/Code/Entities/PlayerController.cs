@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.P) || UI_pause) {
             UI_pause = true;
-            Time.timeScale = 1.0f;
+            Time.timeScale = 0.0f;
             isPause = true;
             pauseMenu.SetActive(true);
         }

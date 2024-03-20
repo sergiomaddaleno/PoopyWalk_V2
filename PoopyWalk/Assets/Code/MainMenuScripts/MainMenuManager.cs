@@ -13,6 +13,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         StartCoroutine(StartLogoAnimationAfterSeconds());
+        Time.timeScale = 1.0f;
     }
     public void StartLogoAnimation()
     {
