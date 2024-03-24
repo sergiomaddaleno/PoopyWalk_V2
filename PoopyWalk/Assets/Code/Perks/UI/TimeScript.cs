@@ -17,6 +17,8 @@ public class TimeScript : MonoBehaviour
     public Button boton;
     public int countgameover=0;
     public bool gameove=false;
+    public AudioClip audioClip; 
+     private AudioSource audioSource;
     void Start() {
         UpdateTimer(levelOneCountdown);
         if(instance == null)
@@ -26,6 +28,18 @@ public class TimeScript : MonoBehaviour
           image.SetActive(false);
           pop.SetActive(false);
           gameove=false;
+          audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            // Si no hay AudioSource, lo creamos y lo adjuntamos al mismo GameObject
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Asigna el clip de audio al AudioSource
+        audioSource.clip = audioClip;
+
+        // Desactiva el AudioSource al inicio
+        audioSource.enabled = false;
     }
 
     private void UpdateTimer(float timer) {
@@ -33,6 +47,12 @@ public class TimeScript : MonoBehaviour
         int seconds = Mathf.FloorToInt(timer % 60);
         if (minutes == 0 && seconds == 15) {
             timerText.color = Color.red;
+            if (!audioSource.enabled)
+            {
+                audioSource.enabled = true;
+                audioSource.Play();
+                
+            }
         }
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
@@ -46,20 +66,21 @@ public class TimeScript : MonoBehaviour
     }
 
     void Update() {
+        
         if (levelOneCountdown >= 1.0f && !stopTimer) {
             levelOneCountdown -= Time.deltaTime;
             UpdateTimer(levelOneCountdown);
             //Debug.Log("Tutorial pass!");
-            
+             
         }else{
             AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
-
-           
+             
+           audioSource.enabled = false;
             animator.Play(nuevoClip.name, 0, currentState.normalizedTime); 
             player.isPause=true;
             pop.SetActive(true);
             countgameover++;
-            if(countgameover>600){
+            if(countgameover>800){
 
                 gameove=true;
                 countgameover=0;

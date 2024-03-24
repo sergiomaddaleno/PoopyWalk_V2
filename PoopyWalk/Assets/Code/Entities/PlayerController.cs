@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour {
         {
 
             Vector3 posicionActual = plug.transform.position;
-          posicionActual.y += 0.01f;
+          posicionActual.y += 0.05f;
           plug.transform.position = posicionActual;
             plugtime--;
             if (plug.transform.position.y >= 12.0f)
