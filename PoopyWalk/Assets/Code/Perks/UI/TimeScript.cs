@@ -13,8 +13,10 @@ public class TimeScript : MonoBehaviour
     public AnimationClip nuevoClip;
     public Animator animator;
     public PlayerController player;
-    public GameObject image;
+    public GameObject image,pop;
     public Button boton;
+    public int countgameover=0;
+    public bool gameove=false;
     void Start() {
         UpdateTimer(levelOneCountdown);
         if(instance == null)
@@ -22,12 +24,14 @@ public class TimeScript : MonoBehaviour
           
           boton.gameObject.SetActive(false);
           image.SetActive(false);
+          pop.SetActive(false);
+          gameove=false;
     }
 
     private void UpdateTimer(float timer) {
         int minutes = Mathf.FloorToInt(timer / 60);
         int seconds = Mathf.FloorToInt(timer % 60);
-        if (minutes == 0 && seconds == 30) {
+        if (minutes == 0 && seconds == 15) {
             timerText.color = Color.red;
         }
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
@@ -42,7 +46,7 @@ public class TimeScript : MonoBehaviour
     }
 
     void Update() {
-        if (levelOneCountdown > 0.0f && !stopTimer) {
+        if (levelOneCountdown >= 1.0f && !stopTimer) {
             levelOneCountdown -= Time.deltaTime;
             UpdateTimer(levelOneCountdown);
             //Debug.Log("Tutorial pass!");
@@ -53,7 +57,17 @@ public class TimeScript : MonoBehaviour
            
             animator.Play(nuevoClip.name, 0, currentState.normalizedTime); 
             player.isPause=true;
-            if(!player.wins){
+            pop.SetActive(true);
+            countgameover++;
+            if(countgameover>600){
+
+                gameove=true;
+                countgameover=0;
+
+            }
+
+
+            if(!player.wins&&gameove){
             image.SetActive(true);
             
             boton.gameObject.SetActive(true);

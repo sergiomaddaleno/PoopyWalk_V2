@@ -48,12 +48,13 @@ public class PlayerController : MonoBehaviour {
         timetoslow = 550.0f;
         plug.SetActive(false);
         timetopluge = false;
-        plugtime = 300;
+        plugtime = 400;
         UI_jump = false;
         UI_pause = false;
         boton.gameObject.SetActive(false);
         win.SetActive(false);
         wins=false;
+       
     }
 
 
@@ -97,13 +98,18 @@ public class PlayerController : MonoBehaviour {
 
         if (timetopluge)
         {
+
+            Vector3 posicionActual = plug.transform.position;
+          posicionActual.y += 0.01f;
+          plug.transform.position = posicionActual;
             plugtime--;
-            if (plugtime <= 0)
+            if (plug.transform.position.y >= 12.0f)
             {
 
                 timetopluge = false;
-                plugtime = 300;
+                plugtime = 400;
                 plug.SetActive(false);
+                 
             }
 
         }
@@ -174,6 +180,10 @@ public class PlayerController : MonoBehaviour {
           Destroy(coll.gameObject);
           TimeScript.instance.levelOneCountdown += 5.0f;
           plug.SetActive(true);
+           Vector3 nuevaPosicion = plug.transform.position;
+                nuevaPosicion.y = coll.transform.position.y;
+                nuevaPosicion.x = coll.transform.position.x;
+                plug.transform.position = nuevaPosicion;
           timetopluge = true;
         }
     }
