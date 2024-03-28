@@ -186,6 +186,11 @@ public class PlayerController : MonoBehaviour {
                 plug.transform.position = nuevaPosicion;
           timetopluge = true;
         }
+
+         if (coll.gameObject.CompareTag("StarPerk")) {
+            Destroy(coll.gameObject);
+            //Implment StarScript
+        }
     }
       IEnumerator poopsound()
         {

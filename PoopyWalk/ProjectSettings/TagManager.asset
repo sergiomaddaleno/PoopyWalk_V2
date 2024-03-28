@@ -10,6 +10,7 @@ TagManager:
   - SodaPerk
   - CorkPerk
   - HumanEnemy
+  - StarPerk
   layers:
   - Default
   - TransparentFX
