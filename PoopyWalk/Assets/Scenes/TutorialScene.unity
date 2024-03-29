@@ -3013,7 +3013,11 @@ MonoBehaviour:
   animator: {fileID: 1850970787}
   player: {fileID: 1850970786}
   image: {fileID: 731092386}
+  pop: {fileID: 0}
   boton: {fileID: 930381872}
+  countgameover: 0
+  gameove: 0
+  audioClip: {fileID: 0}
 --- !u!114 &915197523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15444,6 +15448,10 @@ PrefabInstance:
     - target: {fileID: 7339305949295472372, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476807146395560341, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
