@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour {
     public Joystick movementJoystick;
     public float joystickSpeedMultiplier = 1.5f;
     public bool wins;
+    public int countstars;
     private bool UI_jump;
     public bool UI_pause;
     
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour {
         boton.gameObject.SetActive(false);
         win.SetActive(false);
         wins=false;
-       
+        countstars=0;
     }
 
 
@@ -149,6 +150,8 @@ public class PlayerController : MonoBehaviour {
             isPause = true;
             pauseMenu.SetActive(true);
         }
+
+        
     }
 
     public IEnumerator ChangeScenes()
@@ -189,7 +192,10 @@ public class PlayerController : MonoBehaviour {
 
          if (coll.gameObject.CompareTag("StarPerk")) {
             Destroy(coll.gameObject);
-            //Implment StarScript
+            
+           
+            countstars++;
+            Debug.Log(countstars);
         }
     }
       IEnumerator poopsound()
@@ -209,6 +215,18 @@ public class PlayerController : MonoBehaviour {
           coll.GetComponent<Animator>().SetTrigger("Arrival");
           TimeScript.instance.stopTimer = true;
           wins=true;
+          if(countstars>=PlayerPrefs.GetInt("StarPerk",0)){
+          PlayerPrefs.SetInt("StarPerk",countstars);
+          PlayerPrefs.Save();
+          }
+
+          
+           PlayerPrefs.SetInt("Level2",1);
+           PlayerPrefs.Save();  
+          
+
+          Debug.Log("save");
+          Debug.Log(countstars);
           if(GameManager.game.isLevel1){
             float aux_time = TimeScript.instance.ObtainTime();
             int minutes = Mathf.FloorToInt(aux_time / 60);
