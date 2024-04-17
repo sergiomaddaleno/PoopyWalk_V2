@@ -75,7 +75,7 @@ public class TimeScript : MonoBehaviour
         }else{
             AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
              
-           audioSource.enabled = false;
+           //audioSource.enabled = false;
             animator.Play(nuevoClip.name, 0, currentState.normalizedTime); 
             player.isPause=true;
             pop.SetActive(true);

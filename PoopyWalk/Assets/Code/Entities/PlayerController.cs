@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour {
     public int countstars;
     private bool UI_jump;
     public bool UI_pause;
-    
+    public TimeScript instance;
+     string sceneName;
     
     /*
     1 -- Pedo impulso
@@ -56,16 +57,23 @@ public class PlayerController : MonoBehaviour {
         win.SetActive(false);
         wins=false;
         countstars=0;
+        sceneName = SceneManager.GetActiveScene().name;
     }
 
 
     void Update() {
 
+        if(!isPause){
+
+        }
         float horizontalInput = movementJoystick.Direction.x;
         Vector3 horizontalMovement = new Vector3(horizontalInput, 0, 0);
         
         Vector3 movement = horizontalMovement;
-        transform.position += movement * speed * joystickSpeedMultiplier * Time.deltaTime;
+        if(!isPause){
+
+            transform.position += movement * speed * joystickSpeedMultiplier * Time.deltaTime;
+        }
 
         if (Mathf.Abs(horizontalInput) > 0) {
             sprite.flipX = horizontalInput < 0;
@@ -152,6 +160,8 @@ public class PlayerController : MonoBehaviour {
         }
 
         
+
+        
     }
 
     public IEnumerator ChangeScenes()
@@ -196,6 +206,12 @@ public class PlayerController : MonoBehaviour {
            
             countstars++;
             Debug.Log(countstars);
+        }
+
+        if (coll.gameObject.CompareTag("TimeTutorial")) {
+            instance.levelOneCountdown = 16.0f;
+            Destroy(coll.gameObject);
+
         }
     }
       IEnumerator poopsound()
