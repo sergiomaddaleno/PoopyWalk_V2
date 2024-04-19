@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start(){
         timeslow = false;
-        timetoslow = 550.0f;
+        timetoslow = 250.0f;
         plug.SetActive(false);
         timetopluge = false;
         plugtime = 400;
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour {
             timetoslow--;
             if(timetoslow <= 0){
                 timeslow = false;
-                timetoslow = 500;
+                timetoslow = 250;
                 speed = 7.0f;
             }
         }
@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour {
 
         if ((Input.GetKeyDown(KeyCode.Space) || UI_jump) && fuel > 0.0f && !isPause) {
             UI_jump = false;
-            rb.velocity = new Vector2(rb.velocity.x, 8.0f);
+            rb.velocity = new Vector2(rb.velocity.x, 13.0f);
             fuel -= 5.0f;
             Instantiate(fartVFX, this.transform.position, Quaternion.identity);
             audio[0].PlayOneShot(audioclip[0]);
@@ -205,7 +205,12 @@ public class PlayerController : MonoBehaviour {
             
            
             countstars++;
-            Debug.Log(countstars);
+        
+        }
+
+        if (coll.gameObject.CompareTag("StarPerkTutorial")) {
+            Destroy(coll.gameObject);
+
         }
 
         if (coll.gameObject.CompareTag("TimeTutorial")) {

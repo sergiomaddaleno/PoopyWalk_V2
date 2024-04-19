@@ -12,6 +12,7 @@ TagManager:
   - HumanEnemy
   - StarPerk
   - TimeTutorial
+  - StarPerkTutorial
   layers:
   - Default
   - TransparentFX

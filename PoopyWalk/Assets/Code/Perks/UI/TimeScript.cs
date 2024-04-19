@@ -80,7 +80,7 @@ public class TimeScript : MonoBehaviour
             player.isPause=true;
             pop.SetActive(true);
             countgameover++;
-            if(countgameover>800){
+            if(countgameover>150){
 
                 gameove=true;
                 countgameover=0;
