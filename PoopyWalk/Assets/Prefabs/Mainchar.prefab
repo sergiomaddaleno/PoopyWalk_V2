@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e658d87b379e182469df7f0ab20edc6d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -172,7 +172,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f64be527ad91da64ca3a0330cb968fb0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -314,7 +314,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e658d87b379e182469df7f0ab20edc6d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -541,7 +541,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e658d87b379e182469df7f0ab20edc6d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5468,7 +5468,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e658d87b379e182469df7f0ab20edc6d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5565,7 +5565,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e658d87b379e182469df7f0ab20edc6d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5662,7 +5662,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e658d87b379e182469df7f0ab20edc6d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5906,7 +5906,9 @@ MonoBehaviour:
   movementJoystick: {fileID: 0}
   joystickSpeedMultiplier: 1.5
   wins: 0
+  countstars: 0
   UI_pause: 0
+  instance: {fileID: 0}
 --- !u!1 &7476807146395560341
 GameObject:
   m_ObjectHideFlags: 0
@@ -6071,7 +6073,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e658d87b379e182469df7f0ab20edc6d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6131,19 +6133,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7226131192330115651, guid: bfac12fd4cffa4f47a01ec0f2e1f709c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.681875
+      value: 2.6573627
       objectReference: {fileID: 0}
     - target: {fileID: 7226131192330115651, guid: bfac12fd4cffa4f47a01ec0f2e1f709c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6975
+      value: 2.970625
       objectReference: {fileID: 0}
     - target: {fileID: 7226131192330115651, guid: bfac12fd4cffa4f47a01ec0f2e1f709c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 617.63
+      value: 975.72
       objectReference: {fileID: 0}
     - target: {fileID: 7226131192330115651, guid: bfac12fd4cffa4f47a01ec0f2e1f709c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 299.89
+      value: 524.747
       objectReference: {fileID: 0}
     - target: {fileID: 7226131192330115651, guid: bfac12fd4cffa4f47a01ec0f2e1f709c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6176,6 +6178,22 @@ PrefabInstance:
     - target: {fileID: 7226131192330115651, guid: bfac12fd4cffa4f47a01ec0f2e1f709c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769042964390295313, guid: bfac12fd4cffa4f47a01ec0f2e1f709c, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769042964390295313, guid: bfac12fd4cffa4f47a01ec0f2e1f709c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769042964390295313, guid: bfac12fd4cffa4f47a01ec0f2e1f709c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769042964390295313, guid: bfac12fd4cffa4f47a01ec0f2e1f709c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
