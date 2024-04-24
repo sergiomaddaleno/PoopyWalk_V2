@@ -11,21 +11,25 @@ public class CameraController : MonoBehaviour
     // public Transform transform;
     // Update is called once per frame
 
-    public float lerpSpeed = 0.0001f; // Adjust the speed of the lerp
+    public float zoomSpeed = 5f;
 
     void Update()
     {
         if (timer.levelOneCountdown <= 1)
         {
-            mc.orthographicSize = 5;
-            Vector3 targetpos = new Vector3(player.position.x, 1, -10.0f);
 
-            camera.transform.position = Vector3.Lerp(camera.transform.position, targetpos, lerpSpeed);
+            float targetSize = 5f;
+            mc.orthographicSize = Mathf.Lerp(mc.orthographicSize, targetSize, Time.deltaTime * zoomSpeed);
+
+            camera.transform.position = new Vector3(player.position.x, 1.0f, -10.0f);
         }
         else
         {
-            camera.transform.position = new Vector3(player.position.x,camera.position.y, -10.0f);
 
+            float targetSize = 10f;
+            mc.orthographicSize = Mathf.Lerp(mc.orthographicSize, targetSize, Time.deltaTime * zoomSpeed);
+
+            camera.transform.position = new Vector3(player.position.x, camera.transform.position.y, -10.0f);
         }
     }
 }

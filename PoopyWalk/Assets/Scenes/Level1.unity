@@ -294,7 +294,7 @@ MonoBehaviour:
   player: {fileID: 31098556}
   camera: {fileID: 513833778}
   mc: {fileID: 513833777}
-  lerpSpeed: 0.1
+  zoomSpeed: 5
 --- !u!114 &31098563 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1123607680437339841, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
