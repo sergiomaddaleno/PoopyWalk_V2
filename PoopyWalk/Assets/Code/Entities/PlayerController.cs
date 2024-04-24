@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour {
 
         if ((Input.GetKeyDown(KeyCode.Space) || UI_jump) && fuel > 0.0f && !isPause) {
             UI_jump = false;
-            rb.velocity = new Vector2(rb.velocity.x, 13.0f);
+            rb.velocity = new Vector2(rb.velocity.x, 12.0f);
             fuel -= 5.0f;
             Instantiate(fartVFX, this.transform.position, Quaternion.identity);
             audio[0].PlayOneShot(audioclip[0]);
