@@ -27092,6 +27092,11 @@ Transform:
   - {fileID: 1496049312}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &584549462 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4385099014807211201, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
+  m_PrefabInstance: {fileID: 1431427112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &593365635
 GameObject:
   m_ObjectHideFlags: 0
@@ -51387,7 +51392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 192047230197964677, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 11.731803
+      value: 30.832645
       objectReference: {fileID: 0}
     - target: {fileID: 192047230197964677, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56860,6 +56865,10 @@ PrefabInstance:
       propertyPath: instance
       value: 
       objectReference: {fileID: 1069778608}
+    - target: {fileID: 1123607680437339841, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 584549462}
     - target: {fileID: 1123607680437339841, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
       propertyPath: pauseMenu
       value: 

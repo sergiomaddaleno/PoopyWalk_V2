@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
     public bool timeslow;
     public float timetoslow;
     public GameObject plug;
+    public ParticleSystem particles;
     public AudioSource[] audio;
     public AudioClip[] audioclip;
     public int timetomessage=8000;
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start(){
         timeslow = false;
-        timetoslow = 250.0f;
+        timetoslow = 500.0f;
         plug.SetActive(false);
         timetopluge = false;
         plugtime = 400;
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour {
         UI_pause = false;
         boton.gameObject.SetActive(false);
         win.SetActive(false);
+        particles.Stop();
         wins=false;
         countstars=0;
         sceneName = SceneManager.GetActiveScene().name;
@@ -100,8 +102,9 @@ public class PlayerController : MonoBehaviour {
             timetoslow--;
             if(timetoslow <= 0){
                 timeslow = false;
-                timetoslow = 250;
+                timetoslow = 500;
                 speed = 7.0f;
+                particles.Stop();
             }
         }
 
@@ -229,6 +232,7 @@ public class PlayerController : MonoBehaviour {
          {
            speed = 2.0f;
            timeslow = true;
+           particles.Play();
          }
 
         if(coll.gameObject.CompareTag("Door")){
