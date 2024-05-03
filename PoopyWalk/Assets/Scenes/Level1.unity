@@ -27092,11 +27092,6 @@ Transform:
   - {fileID: 1496049312}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &584549462 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4385099014807211201, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
-  m_PrefabInstance: {fileID: 1431427112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &593365635
 GameObject:
   m_ObjectHideFlags: 0
@@ -51388,11 +51383,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 192047230197964677, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6120819
+      value: 1.692686
       objectReference: {fileID: 0}
     - target: {fileID: 192047230197964677, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 30.832645
+      value: 21.737015
       objectReference: {fileID: 0}
     - target: {fileID: 192047230197964677, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51400,7 +51395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 192047230197964677, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.95
+      value: 5.28
       objectReference: {fileID: 0}
     - target: {fileID: 192047230197964677, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51434,9 +51429,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2281151515139127511, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 2281151515139127511, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 2281151515139127511, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2281151515139127511, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2495174991062296546, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
       propertyPath: m_Name
       value: InitLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486034178368067914, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486034178368067914, guid: 44f28e1ee351760498ac7a90242f82a6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56868,7 +56887,7 @@ PrefabInstance:
     - target: {fileID: 1123607680437339841, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
       propertyPath: particles
       value: 
-      objectReference: {fileID: 584549462}
+      objectReference: {fileID: 0}
     - target: {fileID: 1123607680437339841, guid: cd60e5e2f8614204fb542cf61c87c940, type: 3}
       propertyPath: pauseMenu
       value: 
