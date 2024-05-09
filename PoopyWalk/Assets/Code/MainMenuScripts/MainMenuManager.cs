@@ -7,7 +7,7 @@ public class MainMenuManager : MonoBehaviour
     public Animator buttonsAnim;
     public Animator logoAnim;
     public static MainMenuManager instance;
-    public float secondsToStart = 0.5f;
+    public float secondsToStart = 0.2f;
 
     private void Start()
     {

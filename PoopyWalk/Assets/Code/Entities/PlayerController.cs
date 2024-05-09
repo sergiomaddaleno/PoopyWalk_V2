@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour {
     public GameObject fartVFX, pauseMenu,Wc,win,game;
     public Transform player;
     public Button boton;
+    public Button play_again_boton;
+
     public SpriteRenderer sprite;
     public Animator animator;
     public LayerMask groundMask;
@@ -29,13 +31,16 @@ public class PlayerController : MonoBehaviour {
     public int timetomessage=8000;
     public bool showmessage=true;
     public Joystick movementJoystick;
-    public float joystickSpeedMultiplier = 1.5f;
+    public float joystickSpeedMultiplier = 50.0f;
     public bool wins;
     public int countstars;
     private bool UI_jump;
     public bool UI_pause;
     public TimeScript instance;
      string sceneName;
+     public Color greyColor = new Color(0.5f, 0.5f, 0.5f, 1f); 
+      public float greyTintStrength = 0.5f;
+      private Color originalColor = Color.white; 
     
     /*
     1 -- Pedo impulso
@@ -55,11 +60,14 @@ public class PlayerController : MonoBehaviour {
         UI_jump = false;
         UI_pause = false;
         boton.gameObject.SetActive(false);
+        play_again_boton.gameObject.SetActive(false);
+
         win.SetActive(false);
         particles.Stop();
         wins=false;
         countstars=0;
         sceneName = SceneManager.GetActiveScene().name;
+        originalColor = sprite.color;
     }
 
 
@@ -98,15 +106,7 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("Running", false);
         }
 
-        if(timeslow){
-            timetoslow--;
-            if(timetoslow <= 0){
-                timeslow = false;
-                timetoslow = 500;
-                speed = 7.0f;
-                particles.Stop();
-            }
-        }
+       
 
         if (timetopluge)
         {
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour {
         if ((Input.GetKeyDown(KeyCode.Space) || UI_jump) && fuel > 0.0f && !isPause) {
             UI_jump = false;
             rb.velocity = new Vector2(rb.velocity.x, 12.0f);
-            fuel -= 5.0f;
+            fuel -= 25.0f;
             Instantiate(fartVFX, this.transform.position, Quaternion.identity);
             audio[0].PlayOneShot(audioclip[0]);
         }
@@ -231,7 +231,7 @@ public class PlayerController : MonoBehaviour {
          if(coll.gameObject.CompareTag("HumanEnemy"))
          {
            speed = 2.0f;
-           timeslow = true;
+           sprite.color = greyColor;
            particles.Play();
          }
 
@@ -270,6 +270,8 @@ public class PlayerController : MonoBehaviour {
           }
         GameManager.game.isLevel1 = false;
         boton.gameObject.SetActive(true);
+        play_again_boton.gameObject.SetActive(true);
+
         win.SetActive(true);
         game.SetActive(false);
           speed = 0.0f;
@@ -278,6 +280,16 @@ public class PlayerController : MonoBehaviour {
            audio[0].PlayOneShot(audioclip[4]);
            //StartCoroutine(ChangeScenes());
         }
+    }
+
+    public void OnTriggerExit2D(Collider2D coll) {
+        
+        if (coll.gameObject.CompareTag("HumanEnemy"))
+        {
+            speed = 7.0f;
+            sprite.color = originalColor; 
+        }
+
     }
 
     public void GetTrueJump(){
