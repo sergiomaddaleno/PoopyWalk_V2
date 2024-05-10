@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour {
     public bool timeslow;
     public float timetoslow;
     public GameObject plug;
-    public ParticleSystem particles;
+    public ParticleSystem perk_particles;
+
     public AudioSource[] audio;
     public AudioClip[] audioclip;
     public int timetomessage=8000;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour {
     public float joystickSpeedMultiplier = 50.0f;
     public bool wins;
     public int countstars;
+    public CountLevelStars count_level_stars;
     private bool UI_jump;
     public bool UI_pause;
     public TimeScript instance;
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour {
         play_again_boton.gameObject.SetActive(false);
 
         win.SetActive(false);
-        particles.Stop();
+
         wins=false;
         countstars=0;
         sceneName = SceneManager.GetActiveScene().name;
@@ -182,6 +184,7 @@ public class PlayerController : MonoBehaviour {
           if (fuel < 100.0f) {
               fuel += 100.0f - fuel;
           }
+          Instantiate(perk_particles, transform.position, Quaternion.identity);
         }
 
         if (coll.gameObject.CompareTag("PoopEnemy")) {
@@ -191,6 +194,8 @@ public class PlayerController : MonoBehaviour {
         if (coll.gameObject.CompareTag("PaperPerk")) {
             Destroy(coll.gameObject);
             screen.isPaper = true;
+          Instantiate(perk_particles, transform.position, Quaternion.identity);
+
         }
         if (coll.gameObject.CompareTag("CorkPerk")) {
           Destroy(coll.gameObject);
@@ -201,25 +206,28 @@ public class PlayerController : MonoBehaviour {
                 nuevaPosicion.x = coll.transform.position.x;
                 plug.transform.position = nuevaPosicion;
           timetopluge = true;
+          Instantiate(perk_particles, transform.position, Quaternion.identity);
+
         }
 
          if (coll.gameObject.CompareTag("StarPerk")) {
             Destroy(coll.gameObject);
             
-           
+           count_level_stars.stars++;
             countstars++;
+          Instantiate(perk_particles, transform.position, Quaternion.identity);
         
         }
 
         if (coll.gameObject.CompareTag("StarPerkTutorial")) {
             Destroy(coll.gameObject);
+          Instantiate(perk_particles, transform.position, Quaternion.identity);
 
         }
 
         if (coll.gameObject.CompareTag("TimeTutorial")) {
             instance.levelOneCountdown = 16.0f;
             Destroy(coll.gameObject);
-
         }
     }
       IEnumerator poopsound()
@@ -232,7 +240,7 @@ public class PlayerController : MonoBehaviour {
          {
            speed = 2.0f;
            sprite.color = greyColor;
-           particles.Play();
+      
          }
 
         if(coll.gameObject.CompareTag("Door")){

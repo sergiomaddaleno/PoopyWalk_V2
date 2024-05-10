@@ -15,6 +15,12 @@ public class TimeScript : MonoBehaviour
     public PlayerController player;
     public GameObject image,pop;
     public Button boton;
+    public Button play_again_boton;
+
+    public GameObject red_border;
+    public float blinkInterval = 0.5f; 
+    private Coroutine blinkCoroutine;
+
     public int countgameover=0;
     public bool gameove=false;
     public AudioClip audioClip; 
@@ -25,6 +31,8 @@ public class TimeScript : MonoBehaviour
           instance = this;
           
           boton.gameObject.SetActive(false);
+          play_again_boton.gameObject.SetActive(false);
+
           image.SetActive(false);
           pop.SetActive(false);
           gameove=false;
@@ -40,22 +48,41 @@ public class TimeScript : MonoBehaviour
 
         // Desactiva el AudioSource al inicio
         audioSource.enabled = false;
+
+            red_border.SetActive(false);
+
     }
 
-    private void UpdateTimer(float timer) {
+    private void UpdateTimer(float timer)
+    {
         int minutes = Mathf.FloorToInt(timer / 60);
         int seconds = Mathf.FloorToInt(timer % 60);
-        if (minutes == 0 && seconds == 15) {
+        if (minutes == 0 && seconds == 15)
+        {
             timerText.color = Color.red;
+            red_border.SetActive(true);
+            if (blinkCoroutine == null)
+            {
+                blinkCoroutine = StartCoroutine(BlinkBorder());
+            }
             if (!audioSource.enabled)
             {
                 audioSource.enabled = true;
                 audioSource.Play();
-                
             }
         }
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
+    private IEnumerator BlinkBorder()
+    {
+        while (true)
+        {
+            red_border.SetActive(!red_border.activeSelf); // Alterna entre activar y desactivar el borde
+            yield return new WaitForSeconds(blinkInterval); // Espera el intervalo de parpadeo
+        }
+    }
+
 
     public float ObtainTime() {
         return initialTime - levelOneCountdown;
@@ -92,6 +119,7 @@ public class TimeScript : MonoBehaviour
             image.SetActive(true);
             
             boton.gameObject.SetActive(true);
+            play_again_boton.gameObject.SetActive(true);
             
 
             }
