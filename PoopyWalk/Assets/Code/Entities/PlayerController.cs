@@ -20,15 +20,24 @@ public class PlayerController : MonoBehaviour {
     public float speed = 7.0f, fuel = 0.0f;
     private bool grounded = false;
     public bool timetopluge; 
-    public float plugtime;
+    public bool timetoplugeBurger;
+    public float plugtime; 
+    public float plugtimeBurger;
     public bool isPause = false;
     public bool timeslow;
     public float timetoslow;
+    public float timetoslow_banana;
+    
+    public float pushForce = 10f;
     public GameObject plug;
+    public GameObject plugBurger;
+
     public ParticleSystem perk_particles;
 
     public AudioSource[] audio;
+    private AudioSource collect_sound;
     public AudioClip[] audioclip;
+
     public int timetomessage=8000;
     public bool showmessage=true;
     public Joystick movementJoystick;
@@ -44,6 +53,7 @@ public class PlayerController : MonoBehaviour {
       public float greyTintStrength = 0.5f;
       private Color originalColor = Color.white; 
     
+    public bool getbanana = false;
     /*
     1 -- Pedo impulso
     2 -- Kaka
@@ -56,9 +66,13 @@ public class PlayerController : MonoBehaviour {
     void Start(){
         timeslow = false;
         timetoslow = 500.0f;
+        timetoslow_banana = 1.0f;
         plug.SetActive(false);
+        plugBurger.SetActive(false);
         timetopluge = false;
+        timetoplugeBurger=false;
         plugtime = 400;
+        plugtimeBurger = 400;
         UI_jump = false;
         UI_pause = false;
         boton.gameObject.SetActive(false);
@@ -70,18 +84,19 @@ public class PlayerController : MonoBehaviour {
         countstars=0;
         sceneName = SceneManager.GetActiveScene().name;
         originalColor = sprite.color;
+
+        collect_sound = GetComponent<AudioSource>();
     }
 
 
     void Update() {
 
-        if(!isPause){
+        if(getbanana==false){
 
-        }
         float horizontalInput = movementJoystick.Direction.x;
-        Vector3 horizontalMovement = new Vector3(horizontalInput, 0, 0);
-        
-        Vector3 movement = horizontalMovement;
+          Vector3 horizontalMovement = new Vector3(horizontalInput, 0, 0);
+          Vector3 movement = horizontalMovement;
+
         if(!isPause){
 
             transform.position += movement * speed * joystickSpeedMultiplier * Time.deltaTime;
@@ -109,6 +124,7 @@ public class PlayerController : MonoBehaviour {
         }
 
        
+        }
 
         if (timetopluge)
         {
@@ -123,6 +139,24 @@ public class PlayerController : MonoBehaviour {
                 timetopluge = false;
                 plugtime = 400;
                 plug.SetActive(false);
+                 
+            }
+
+        }
+
+        if (timetoplugeBurger)
+        {
+
+            Vector3 posicionActual = plugBurger.transform.position;
+          posicionActual.y += 0.05f;
+          plugBurger.transform.position = posicionActual;
+            plugtimeBurger--;
+            if (plugBurger.transform.position.y >= 12.0f)
+            {
+
+                timetoplugeBurger = false;
+                plugtimeBurger = 400;
+                plugBurger.SetActive(false);
                  
             }
 
@@ -152,7 +186,7 @@ public class PlayerController : MonoBehaviour {
         if ((Input.GetKeyDown(KeyCode.Space) || UI_jump) && fuel > 0.0f && !isPause) {
             UI_jump = false;
             rb.velocity = new Vector2(rb.velocity.x, 12.0f);
-            fuel -= 25.0f;
+            fuel -= 20.0f;
             Instantiate(fartVFX, this.transform.position, Quaternion.identity);
             audio[0].PlayOneShot(audioclip[0]);
         }
@@ -185,6 +219,7 @@ public class PlayerController : MonoBehaviour {
               fuel += 100.0f - fuel;
           }
           Instantiate(perk_particles, transform.position, Quaternion.identity);
+          collect_sound.Play();
         }
 
         if (coll.gameObject.CompareTag("PoopEnemy")) {
@@ -195,6 +230,7 @@ public class PlayerController : MonoBehaviour {
             Destroy(coll.gameObject);
             screen.isPaper = true;
           Instantiate(perk_particles, transform.position, Quaternion.identity);
+          collect_sound.Play();
 
         }
         if (coll.gameObject.CompareTag("CorkPerk")) {
@@ -207,7 +243,35 @@ public class PlayerController : MonoBehaviour {
                 plug.transform.position = nuevaPosicion;
           timetopluge = true;
           Instantiate(perk_particles, transform.position, Quaternion.identity);
+          collect_sound.Play();
 
+        }
+
+        if (coll.gameObject.CompareTag("BurgerPerk")) {
+          Destroy(coll.gameObject);
+          TimeScript.instance.levelOneCountdown -= 5.0f;
+          plugBurger.SetActive(true);
+           Vector3 nuevaPosicion = plugBurger.transform.position;
+                nuevaPosicion.y = coll.transform.position.y;
+                nuevaPosicion.x = coll.transform.position.x;
+                plugBurger.transform.position = nuevaPosicion;
+          timetoplugeBurger = true;
+          Instantiate(perk_particles, transform.position, Quaternion.identity);
+          collect_sound.Play();
+
+        }
+
+        if (coll.gameObject.CompareTag("BananaPerk")) {
+
+            getbanana = true;
+          Vector2 pushDirection = -coll.contacts[0].normal; // Dirección opuesta al punto de contacto
+            rb.AddForce((pushDirection * -1.0f) * pushForce, ForceMode2D.Impulse);
+
+            Destroy(coll.gameObject);
+          Instantiate(perk_particles, transform.position, Quaternion.identity);
+          collect_sound.Play();
+
+          StartCoroutine(SetBooleanAfterDelay(2.0f)); 
         }
 
          if (coll.gameObject.CompareTag("StarPerk")) {
@@ -216,12 +280,14 @@ public class PlayerController : MonoBehaviour {
            count_level_stars.stars++;
             countstars++;
           Instantiate(perk_particles, transform.position, Quaternion.identity);
-        
+          collect_sound.Play();
+
         }
 
         if (coll.gameObject.CompareTag("StarPerkTutorial")) {
             Destroy(coll.gameObject);
           Instantiate(perk_particles, transform.position, Quaternion.identity);
+          collect_sound.Play();
 
         }
 
@@ -288,6 +354,12 @@ public class PlayerController : MonoBehaviour {
            audio[0].PlayOneShot(audioclip[4]);
            //StartCoroutine(ChangeScenes());
         }
+    }
+
+    IEnumerator SetBooleanAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        getbanana = false;
     }
 
     public void OnTriggerExit2D(Collider2D coll) {
