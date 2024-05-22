@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour {
     public Joystick movementJoystick;
     public float joystickSpeedMultiplier = 50.0f;
     public bool wins;
-    public int countstars;
-    public CountLevelStars count_level_stars;
+    public int countstars,countstars2;
+    public CountLevelStars count_level_stars,count_level_stars2;
     private bool UI_jump;
     public bool UI_pause;
     public TimeScript instance;
@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour {
         timetopluge = false;
         timetoplugeBurger=false;
         plugtime = 400;
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
         plugtimeBurger = 400;
         UI_jump = false;
         UI_pause = false;
@@ -82,6 +84,7 @@ public class PlayerController : MonoBehaviour {
 
         wins=false;
         countstars=0;
+         countstars2=0;
         sceneName = SceneManager.GetActiveScene().name;
         originalColor = sprite.color;
 
@@ -278,7 +281,9 @@ public class PlayerController : MonoBehaviour {
             Destroy(coll.gameObject);
             
            count_level_stars.stars++;
+            count_level_stars.stars2++;
             countstars++;
+            countstars2++;
           Instantiate(perk_particles, transform.position, Quaternion.identity);
           collect_sound.Play();
 
@@ -314,8 +319,13 @@ public class PlayerController : MonoBehaviour {
           coll.GetComponent<Animator>().SetTrigger("Arrival");
           TimeScript.instance.stopTimer = true;
           wins=true;
-          if(countstars>=PlayerPrefs.GetInt("StarPerk",0)){
+          if(countstars>=PlayerPrefs.GetInt("StarPerk",0)&&sceneName == "Level1"){
           PlayerPrefs.SetInt("StarPerk",countstars);
+          PlayerPrefs.Save();
+          }
+
+          if(countstars2>=PlayerPrefs.GetInt("StarPerk2",0)&&sceneName == "Level2"){
+          PlayerPrefs.SetInt("StarPerk2",countstars2);
           PlayerPrefs.Save();
           }
 
