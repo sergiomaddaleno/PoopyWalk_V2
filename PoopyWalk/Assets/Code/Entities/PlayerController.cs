@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
      public Color greyColor = new Color(0.5f, 0.5f, 0.5f, 1f); 
       public float greyTintStrength = 0.5f;
       private Color originalColor = Color.white; 
-    
+    public string sceneNames;
     public bool getbanana = false;
     /*
     1 -- Pedo impulso
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour {
         timetoplugeBurger=false;
         plugtime = 400;
         Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
+        sceneNames = currentScene.name;
         plugtimeBurger = 400;
         UI_jump = false;
         UI_pause = false;
@@ -89,7 +89,6 @@ public class PlayerController : MonoBehaviour {
         originalColor = sprite.color;
 
         collect_sound = GetComponent<AudioSource>();
-        collect_sound.volume = 0.15f;
     }
 
 
@@ -281,7 +280,8 @@ public class PlayerController : MonoBehaviour {
          if (coll.gameObject.CompareTag("StarPerk")) {
             Destroy(coll.gameObject);
             
-           
+           count_level_stars.stars++;
+           count_level_stars2.stars2++;
             countstars++;
             countstars2++;
           Instantiate(perk_particles, transform.position, Quaternion.identity);
@@ -319,12 +319,12 @@ public class PlayerController : MonoBehaviour {
           coll.GetComponent<Animator>().SetTrigger("Arrival");
           TimeScript.instance.stopTimer = true;
           wins=true;
-          if(countstars>=PlayerPrefs.GetInt("StarPerks",0)&&sceneName == "Level1"){
+          if(countstars>=PlayerPrefs.GetInt("StarPerks",0)&&sceneNames == "Level1"){
           PlayerPrefs.SetInt("StarPerks",countstars);
           PlayerPrefs.Save();
           }
 
-          if(countstars2>=PlayerPrefs.GetInt("StarPerk2s",0)&&sceneName == "Level2"){
+          if(countstars2>=PlayerPrefs.GetInt("StarPerk2s",0)&&sceneNames == "Level2"){
           PlayerPrefs.SetInt("StarPerks2",countstars2);
           PlayerPrefs.Save();
           }

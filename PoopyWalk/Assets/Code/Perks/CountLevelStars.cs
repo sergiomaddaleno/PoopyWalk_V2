@@ -41,23 +41,7 @@ public class CountLevelStars : MonoBehaviour
            star3.SetActive(true);
         }
 
-        if(stars2==1){
-
-          star12.SetActive(true);
-        }
-
-        if(stars2==2){
-
-           star12.SetActive(true);
-           star22.SetActive(true);
-        }
-
-        if(stars2==3){
-
-           star12.SetActive(true);
-           star22.SetActive(true);
-           star32.SetActive(true);
-        }
+        
 
         if(levelcompleted==1){
             key.SetActive(false);
