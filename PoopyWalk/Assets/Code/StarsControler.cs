@@ -10,9 +10,9 @@ public class StarsControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        star=PlayerPrefs.GetInt("StarPerk",0);
-        star2=PlayerPrefs.GetInt("StarPerk2",0);
-        levelcompleted=PlayerPrefs.GetInt("Level2",0);
+        star=PlayerPrefs.GetInt("StarPerks",0);
+        star2=PlayerPrefs.GetInt("StarPerks2",0);
+        levelcompleted=PlayerPrefs.GetInt("Levels2",0);
         star1.SetActive(false);
         star2_.SetActive(false);
         star3.SetActive(false);

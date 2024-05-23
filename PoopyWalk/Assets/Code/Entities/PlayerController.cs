@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour {
 
 
     void Update() {
-
+       Debug.Log(sceneName);
         if(getbanana==false){
 
         float horizontalInput = movementJoystick.Direction.x;
@@ -280,8 +280,7 @@ public class PlayerController : MonoBehaviour {
          if (coll.gameObject.CompareTag("StarPerk")) {
             Destroy(coll.gameObject);
             
-           count_level_stars.stars++;
-            count_level_stars.stars2++;
+           
             countstars++;
             countstars2++;
           Instantiate(perk_particles, transform.position, Quaternion.identity);
@@ -319,18 +318,18 @@ public class PlayerController : MonoBehaviour {
           coll.GetComponent<Animator>().SetTrigger("Arrival");
           TimeScript.instance.stopTimer = true;
           wins=true;
-          if(countstars>=PlayerPrefs.GetInt("StarPerk",0)&&sceneName == "Level1"){
-          PlayerPrefs.SetInt("StarPerk",countstars);
+          if(countstars>=PlayerPrefs.GetInt("StarPerks",0)&&sceneName == "Level1"){
+          PlayerPrefs.SetInt("StarPerks",countstars);
           PlayerPrefs.Save();
           }
 
-          if(countstars2>=PlayerPrefs.GetInt("StarPerk2",0)&&sceneName == "Level2"){
-          PlayerPrefs.SetInt("StarPerk2",countstars2);
+          if(countstars2>=PlayerPrefs.GetInt("StarPerk2s",0)&&sceneName == "Level2"){
+          PlayerPrefs.SetInt("StarPerks2",countstars2);
           PlayerPrefs.Save();
           }
 
           
-           PlayerPrefs.SetInt("Level2",1);
+           PlayerPrefs.SetInt("Levels2",1);
            PlayerPrefs.Save();  
           
 
