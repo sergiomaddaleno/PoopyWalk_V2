@@ -281,8 +281,9 @@ public class PlayerController : MonoBehaviour {
             Destroy(coll.gameObject);
             
            count_level_stars.stars++;
-           count_level_stars2.stars2++;
+           //count_level_stars2.stars2++;
             countstars++;
+            Debug.Log(countstars);
             countstars2++;
           Instantiate(perk_particles, transform.position, Quaternion.identity);
           collect_sound.Play();
@@ -321,6 +322,7 @@ public class PlayerController : MonoBehaviour {
           wins=true;
           if(countstars>=PlayerPrefs.GetInt("StarPerks",0)&&sceneNames == "Level1"){
           PlayerPrefs.SetInt("StarPerks",countstars);
+          Debug.Log(countstars);
           PlayerPrefs.Save();
           }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CountLevelStars : MonoBehaviour
 {
    public int stars,stars2;
-    public GameObject star1,star2,star3,star12,star22,star32,key,fon;
+    public GameObject star1,star2,star3,key,fon;
     public int levelcompleted;
     // Start is called before the first frame update
     void Start()
@@ -15,9 +15,7 @@ public class CountLevelStars : MonoBehaviour
         star1.SetActive(false);
         star2.SetActive(false);
         star3.SetActive(false);
-        star12.SetActive(false);
-        star22.SetActive(false);
-        star32.SetActive(false);
+     
     }
 
     // Update is called once per frame
