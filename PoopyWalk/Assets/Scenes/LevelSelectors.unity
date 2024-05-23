@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: 482761899}
   - component: {fileID: 482761902}
   - component: {fileID: 482761901}
-  - component: {fileID: 482761900}
+  - component: {fileID: 482761903}
   m_Layer: 5
   m_Name: Clock_1
   m_TagString: Untagged
@@ -1274,20 +1274,6 @@ RectTransform:
   m_AnchoredPosition: {x: 47.4, y: -66.455}
   m_SizeDelta: {x: 129.53, y: 63.3103}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &482761900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 482761898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9271226b3df905b4c96ce461a6e94b0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 1075036379}
-  gm: {fileID: 241390566}
 --- !u!114 &482761901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1326,6 +1312,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482761898}
   m_CullTransparentMesh: 1
+--- !u!114 &482761903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482761898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9271226b3df905b4c96ce461a6e94b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1075036379}
+  gm: {fileID: 0}
 --- !u!1 &499070536
 GameObject:
   m_ObjectHideFlags: 0
@@ -8271,11 +8271,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1786915167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9271226b3df905b4c96ce461a6e94b0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 90d09d4a1178e3c4cb09734038dd248b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1220521296}
-  gm: {fileID: 241390566}
+  gm: {fileID: 0}
 --- !u!1 &1810300396
 GameObject:
   m_ObjectHideFlags: 0

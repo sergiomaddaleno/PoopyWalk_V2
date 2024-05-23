@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour {
 
 
     void Update() {
-       Debug.Log(sceneName);
+      
         if(getbanana==false){
 
         float horizontalInput = movementJoystick.Direction.x;
@@ -330,6 +330,20 @@ public class PlayerController : MonoBehaviour {
           PlayerPrefs.SetInt("StarPerks2",countstars2);
           PlayerPrefs.Save();
           }
+
+          if(TimeScript.instance.ObtainTime()>PlayerPrefs.GetFloat("time",0.0f)&&sceneNames == "Level1"){
+          PlayerPrefs.SetFloat("time",TimeScript.instance.ObtainTime());
+           Debug.Log(TimeScript.instance.ObtainTime());
+          PlayerPrefs.Save();
+          }
+
+          if(TimeScript.instance.ObtainTime()>PlayerPrefs.GetFloat("time2",0.0f)&&sceneNames == "Level2"){
+          PlayerPrefs.SetFloat("time2",TimeScript.instance.ObtainTime());
+           Debug.Log(TimeScript.instance.ObtainTime());
+          PlayerPrefs.Save();
+          }
+
+          
 
           
            PlayerPrefs.SetInt("Levels2",1);

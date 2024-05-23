@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class TimeScript : MonoBehaviour
 {
     public Text timerText;
-    private float initialTime = 90.0f;
-    public float levelOneCountdown = 90.0f;
+
+    public float levelOneCountdown = 75.0f;
     public bool stopTimer = false;
     public static TimeScript instance;
     public AnimationClip nuevoClip;
@@ -85,7 +85,7 @@ public class TimeScript : MonoBehaviour
 
 
     public float ObtainTime() {
-        return initialTime - levelOneCountdown;
+        return levelOneCountdown;
     }
 
     private void GameOver(){
