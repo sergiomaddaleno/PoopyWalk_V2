@@ -89,6 +89,8 @@ public class PlayerController : MonoBehaviour {
         originalColor = sprite.color;
 
         collect_sound = GetComponent<AudioSource>();
+        //collect_sound.volume = 0.15f;
+
     }
 
 

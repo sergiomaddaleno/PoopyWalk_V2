@@ -8,13 +8,13 @@ public class PoopSpawner : MonoBehaviour {
     Vector3 spawner_pos;
 
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
+{
+    if (other.gameObject.CompareTag("Player"))
     {
-      if(other.gameObject.CompareTag("Player"))
-      {
-        spawner_pos = this.transform.position;
+        Vector3 spawner_pos = this.transform.position;
         Instantiate(pooEnemyPrefab, new Vector3(spawner_pos.x + x_offset, spawner_pos.y, 0f), Quaternion.identity);
         Destroy(gameObject);
-      }
     }
+}
 }
